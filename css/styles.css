@@ -6,28 +6,27 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-    --gray-100:   #F4F2EF;
-    --gray-200:   #E8E5E0;
-    --gray-300:   #D8D4CE;
-    --gray-400:   #B8B3AB;
-    --gray-500:   #8A8580;
-    --gray-600:   #5E5A55;
-    --gray-700:   #454240;
-    --gray-800:   #353230;
-    --gray-900:   #2A2826;
+    --gray-50:    #FAFAF8;
+    --gray-100:   #F2F0EC;
+    --gray-200:   #E8E4DE;
+    --gray-300:   #DAD5CE;
+    --gray-400:   #C0BAB2;
+    --gray-500:   #8A857E;
+    --gray-600:   #5A5650;
+    --gray-700:   #3A3733;
 
-    --bg:         var(--gray-200);
-    --bg-2:       var(--gray-100);
-    --bg-3:       var(--gray-300);
-    --bg-dark:    var(--gray-700);
-    --bg-dark-2:  var(--gray-800);
-    --white:      #FAFAF8;
-    --text:       var(--gray-900);
+    --bg:         var(--gray-100);
+    --bg-2:       var(--gray-50);
+    --bg-3:       var(--gray-200);
+    --bg-dark:    var(--gray-300);
+    --bg-dark-2:  var(--gray-200);
+    --white:      #FFFFFF;
+    --text:       var(--gray-700);
     --text-muted: var(--gray-500);
     --blue:       #1B6AFF;
-    --blue-dim:   rgba(27, 106, 255, 0.1);
-    --border:     rgba(0, 0, 0, 0.07);
-    --border-2:   rgba(0, 0, 0, 0.11);
+    --blue-dim:   rgba(27, 106, 255, 0.09);
+    --border:     rgba(0, 0, 0, 0.06);
+    --border-2:   rgba(0, 0, 0, 0.10);
     --ease:       cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -227,7 +226,7 @@ body {
     background:
         url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80')
         center / cover no-repeat;
-    background-color: #2A2826;
+    background-color: #DAD5CE;
     transform: scale(1.04);
     transition: transform 8s ease;
 }
@@ -237,9 +236,9 @@ body {
     inset: 0;
     background: linear-gradient(
         160deg,
-        rgba(42, 40, 38, 0.94) 0%,
-        rgba(42, 40, 38, 0.78) 55%,
-        rgba(42, 40, 38, 0.90) 100%
+        rgba(242, 240, 236, 0.93) 0%,
+        rgba(242, 240, 236, 0.82) 50%,
+        rgba(232, 228, 222, 0.90) 100%
     );
 }
 
@@ -276,7 +275,7 @@ body {
     color: var(--blue);
     margin-bottom: 24px;
     padding: 7px 16px;
-    border: 1px solid rgba(27, 106, 255, 0.25);
+    border: 1px solid rgba(27, 106, 255, 0.2);
     background: rgba(27, 106, 255, 0.06);
 }
 
@@ -285,7 +284,7 @@ body {
 .hero-title {
     font-size: clamp(38px, 5.5vw, 72px);
     font-weight: 900;
-    color: var(--white);
+    color: var(--gray-700);
     line-height: 1.08;
     letter-spacing: -0.03em;
     margin-bottom: 22px;
@@ -293,7 +292,7 @@ body {
 
 .hero-sub {
     font-size: 17px;
-    color: var(--text);
+    color: var(--gray-600);
     line-height: 1.75;
     margin-bottom: 40px;
     max-width: 540px;
@@ -311,8 +310,8 @@ body {
     display: flex;
     align-items: center;
     padding: 22px 80px;
-    border-top: 1px solid var(--border);
-    background: rgba(12, 13, 16, 0.5);
+    border-top: 1px solid var(--border-2);
+    background: rgba(232, 228, 222, 0.7);
     backdrop-filter: blur(12px);
     gap: 40px;
 }
@@ -322,14 +321,14 @@ body {
 .hero-stat strong {
     font-size: 16px;
     font-weight: 800;
-    color: var(--white);
+    color: var(--gray-700);
     letter-spacing: -0.01em;
     line-height: 1;
 }
 
 .hero-stat span {
     font-size: 11px;
-    color: var(--text-muted);
+    color: var(--gray-500);
     font-weight: 500;
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -555,7 +554,7 @@ body {
 .stat-item {
     text-align: center;
     padding: 20px 0;
-    border-right: 1px solid rgba(255,255,255,0.08);
+    border-right: 1px solid var(--border-2);
 }
 
 .stat-item:last-child { border-right: none; }
@@ -564,7 +563,7 @@ body {
     display: block;
     font-size: clamp(40px, 5vw, 60px);
     font-weight: 900;
-    color: var(--white);
+    color: var(--gray-700);
     line-height: 1;
     letter-spacing: -0.035em;
 }
@@ -781,13 +780,13 @@ body {
     color: var(--blue);
     font-family: Georgia, serif;
     margin-bottom: 24px;
-    opacity: 0.6;
+    opacity: 0.4;
 }
 
 .zitat-inner blockquote {
     font-size: clamp(17px, 2.2vw, 22px);
     font-weight: 400;
-    color: var(--gray-300);
+    color: var(--gray-600);
     line-height: 1.7;
     font-style: italic;
     margin-bottom: 32px;
@@ -808,7 +807,7 @@ body {
 .zitat-author-info strong {
     font-size: 15px;
     font-weight: 700;
-    color: var(--gray-200);
+    color: var(--gray-700);
 }
 
 .zitat-author-info span {
@@ -922,7 +921,7 @@ body {
 .footer-links h4, .footer-contact h4 {
     font-size: 10px;
     font-weight: 700;
-    color: var(--gray-400);
+    color: var(--gray-600);
     text-transform: uppercase;
     letter-spacing: 0.14em;
     margin-bottom: 18px;
@@ -930,21 +929,21 @@ body {
 
 .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 11px; }
 
-.footer-links a { text-decoration: none; color: var(--gray-500); font-size: 14px; transition: color 0.2s; }
-.footer-links a:hover { color: var(--gray-200); }
+.footer-links a { text-decoration: none; color: var(--gray-600); font-size: 14px; transition: color 0.2s; }
+.footer-links a:hover { color: var(--gray-700); }
 
 .footer-contact { display: flex; flex-direction: column; }
 
 .footer-contact a {
     text-decoration: none;
-    color: var(--gray-500);
+    color: var(--gray-600);
     font-size: 14px;
     transition: color 0.2s;
     margin-bottom: 11px;
     display: block;
 }
 
-.footer-contact a:hover { color: var(--gray-200); }
+.footer-contact a:hover { color: var(--gray-700); }
 
 .footer-location {
     display: flex;
@@ -964,12 +963,12 @@ body {
     padding: 20px 0;
 }
 
-.footer-bottom p { font-size: 12px; color: var(--gray-500); }
+.footer-bottom p { font-size: 12px; color: var(--gray-600); }
 
 .footer-legal { display: flex; gap: 20px; }
 
-.footer-legal a { font-size: 12px; color: var(--gray-500); text-decoration: none; transition: color 0.2s; }
-.footer-legal a:hover { color: var(--gray-300); }
+.footer-legal a { font-size: 12px; color: var(--gray-600); text-decoration: none; transition: color 0.2s; }
+.footer-legal a:hover { color: var(--gray-700); }
 
 /* ============================================================
    RESPONSIVE
