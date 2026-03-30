@@ -6,17 +6,18 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-    --bg:         #0C0D10;
-    --bg-2:       #131418;
-    --bg-3:       #1A1B20;
-    --bg-4:       #222428;
-    --white:      #E8E9EE;
-    --text:       #9095A8;
-    --text-muted: #52566A;
+    --bg:         #EBEBEB;
+    --bg-2:       #E2E2E2;
+    --bg-3:       #D6D6D6;
+    --bg-dark:    #2E2E2E;
+    --bg-dark-2:  #383838;
+    --white:      #F8F8F8;
+    --text:       #1A1A1A;
+    --text-muted: #6A6A6A;
     --blue:       #1B6AFF;
-    --blue-dim:   rgba(27, 106, 255, 0.12);
-    --border:     rgba(255, 255, 255, 0.05);
-    --border-2:   rgba(255, 255, 255, 0.09);
+    --blue-dim:   rgba(27, 106, 255, 0.1);
+    --border:     rgba(0, 0, 0, 0.08);
+    --border-2:   rgba(0, 0, 0, 0.14);
     --ease:       cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -30,6 +31,15 @@ body {
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
 }
+
+/* Helle Sections: grau */
+.leistungen  { background: var(--bg-2) !important; }
+.standort    { background: var(--bg) !important; }
+.projekte    { background: var(--bg-2) !important; }
+.ueber-uns   { background: var(--bg) !important; }
+.kontakt     { background: var(--bg-2) !important; }
+.stats       { background: var(--bg-dark) !important; border-color: transparent !important; }
+.footer      { background: var(--bg-dark-2) !important; border-color: rgba(255,255,255,0.07) !important; }
 
 /* ============================================================
    UTILITIES
@@ -52,7 +62,7 @@ body {
 .section-header h2 {
     font-size: clamp(28px, 3.5vw, 44px);
     font-weight: 800;
-    color: var(--white);
+    color: var(--text);
     margin-bottom: 14px;
     line-height: 1.15;
     letter-spacing: -0.025em;
@@ -116,7 +126,7 @@ body {
 }
 
 .navbar.scrolled {
-    background: rgba(12, 13, 16, 0.92);
+    background: rgba(235, 235, 235, 0.95);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     padding: 12px 0;
@@ -138,10 +148,7 @@ body {
     height: 40px;
     width: auto;
     display: block;
-    /* On dark bg: show logo on a subtle dark pill */
-    background: rgba(255,255,255,0.06);
-    padding: 4px 12px;
-    border-radius: 4px;
+    mix-blend-mode: multiply;
 }
 
 .nav-links {
@@ -153,13 +160,13 @@ body {
 
 .nav-links a {
     text-decoration: none;
-    color: var(--text);
+    color: var(--text-muted);
     font-size: 14px;
     font-weight: 500;
     transition: color 0.2s;
 }
 
-.nav-links a:hover { color: var(--white); }
+.nav-links a:hover { color: var(--text); }
 
 .nav-links .nav-cta {
     background: var(--blue);
@@ -335,12 +342,12 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
+    background: var(--border-2);
+    border: 1px solid var(--border-2);
 }
 
 .leistung-card {
-    background: var(--bg-2);
+    background: var(--bg);
     padding: 44px 36px;
     transition: background 0.25s var(--ease);
     position: relative;
@@ -358,7 +365,7 @@ body {
     transition: transform 0.35s var(--ease);
 }
 
-.leistung-card:hover { background: var(--bg-3); }
+.leistung-card:hover { background: var(--bg-2); }
 .leistung-card:hover::after { transform: scaleX(1); }
 
 .card-top {
@@ -398,7 +405,7 @@ body {
 .leistung-card h3 {
     font-size: 18px;
     font-weight: 700;
-    color: var(--white);
+    color: var(--text);
     margin-bottom: 12px;
     letter-spacing: -0.015em;
 }
@@ -425,7 +432,7 @@ body {
 .standort-text h2 {
     font-size: clamp(26px, 3.2vw, 42px);
     font-weight: 800;
-    color: var(--white);
+    color: var(--text);
     margin-bottom: 18px;
     line-height: 1.2;
     letter-spacing: -0.025em;
@@ -471,7 +478,7 @@ body {
     top: -16px;
     left: -16px;
     z-index: 2;
-    background: var(--bg-3);
+    background: var(--white);
     border: 1px solid var(--border-2);
     padding: 14px 18px;
     display: flex;
@@ -486,7 +493,7 @@ body {
     display: block;
     font-size: 13px;
     font-weight: 700;
-    color: var(--white);
+    color: var(--text);
     margin-bottom: 2px;
 }
 
@@ -699,7 +706,7 @@ body {
 .ueber-text h2 {
     font-size: clamp(26px, 3.5vw, 44px);
     font-weight: 800;
-    color: var(--white);
+    color: var(--text);
     margin-bottom: 20px;
     line-height: 1.15;
     letter-spacing: -0.025em;
@@ -726,7 +733,7 @@ body {
     gap: 12px;
     font-size: 14px;
     font-weight: 500;
-    color: var(--text);
+    color: var(--text-muted);
 }
 
 .ueber-list li i {
@@ -762,13 +769,13 @@ body {
     align-items: center;
     gap: 18px;
     padding: 32px 40px;
-    background: var(--bg-2);
+    background: var(--white);
     text-decoration: none;
     transition: background 0.22s;
     flex: 1;
 }
 
-.kontakt-card:hover { background: var(--bg-3); }
+.kontakt-card:hover { background: var(--bg); }
 
 .kontakt-icon {
     width: 44px;
@@ -799,7 +806,7 @@ body {
 .kontakt-value {
     font-size: 14px;
     font-weight: 600;
-    color: var(--white);
+    color: var(--text);
 }
 
 .kontakt-arrow {
