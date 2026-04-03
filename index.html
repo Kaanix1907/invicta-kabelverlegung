@@ -15,6 +15,16 @@
 </head>
 <body>
 
+    <!-- SCROLL CABLE PROGRESS (fixed right edge) -->
+    <div class="cable-progress" id="cableProgress" aria-hidden="true">
+        <div class="cp-node cp-node-top"></div>
+        <div class="cp-track">
+            <div class="cp-fill" id="cableFill"></div>
+            <div class="cp-electron" id="cpElectron"></div>
+        </div>
+        <div class="cp-node cp-node-bottom"></div>
+    </div>
+
     <!-- NAVBAR -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
@@ -35,29 +45,95 @@
 
     <!-- HERO -->
     <section class="hero" id="home">
+        <canvas id="cableCanvas" class="hero-canvas" aria-hidden="true"></canvas>
         <div class="hero-bg"></div>
         <div class="hero-overlay"></div>
         <div class="hero-grain"></div>
-        <div class="hero-radial-1"></div>
-        <div class="hero-radial-2"></div>
-        <div class="hero-content">
-            <div class="hero-location" data-aos="fade-down" data-aos-delay="100">
-                <i class="fas fa-location-dot"></i>
-                Duisburg &nbsp;·&nbsp; NRW &nbsp;·&nbsp; Deutschlandweit
+
+        <div class="hero-inner">
+            <!-- Left: Text -->
+            <div class="hero-content">
+                <div class="hero-location" data-aos="fade-down" data-aos-delay="100">
+                    <i class="fas fa-location-dot"></i>
+                    Duisburg &nbsp;·&nbsp; NRW &nbsp;·&nbsp; Deutschlandweit
+                </div>
+                <h1 class="hero-title" data-aos="fade-up" data-aos-delay="250">
+                    Wir verlegen Kabel.<br>Aber wir bauen<br>mehr als das.
+                </h1>
+                <p class="hero-sub" data-aos="fade-up" data-aos-delay="400">
+                    Hinter INVICTA steckt ein Team aus Duisburg, das seinen Beruf ernst nimmt —
+                    präzise Arbeit, klare Kommunikation, pünktliche Lieferung.
+                </p>
+                <div class="hero-actions" data-aos="fade-up" data-aos-delay="550">
+                    <a href="#kontakt" class="btn btn-primary">Sprechen Sie uns an</a>
+                    <a href="#leistungen" class="btn btn-outline">Unsere Leistungen</a>
+                </div>
             </div>
-            <h1 class="hero-title" data-aos="fade-up" data-aos-delay="250">
-                Wir verlegen Kabel.<br>Aber wir bauen<br>mehr als das.
-            </h1>
-            <p class="hero-sub" data-aos="fade-up" data-aos-delay="400">
-                Hinter INVICTA steckt ein Team aus Duisburg, das seinen Beruf ernst nimmt —
-                und Ihnen nicht verspricht, was es nicht halten kann.
-                Präzise Arbeit, klare Kommunikation, pünktliche Lieferung.
-            </p>
-            <div class="hero-actions" data-aos="fade-up" data-aos-delay="550">
-                <a href="#kontakt" class="btn btn-primary">Sprechen Sie uns an</a>
-                <a href="#leistungen" class="btn btn-outline">Unsere Leistungen</a>
+
+            <!-- Right: Cable cross-section diagram -->
+            <div class="hero-visual" data-aos="fade-left" data-aos-delay="300" aria-hidden="true">
+                <div class="cable-cross-wrap">
+                    <svg class="cable-cross-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <filter id="glow-conductor">
+                                <feGaussianBlur stdDeviation="3" result="b"/>
+                                <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                            </filter>
+                            <filter id="glow-core">
+                                <feGaussianBlur stdDeviation="6" result="b"/>
+                                <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                            </filter>
+                            <radialGradient id="conductorGrad" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="#60A8FF" stop-opacity="0.5"/>
+                                <stop offset="100%" stop-color="#1B6AFF" stop-opacity="0.1"/>
+                            </radialGradient>
+                        </defs>
+                        <!-- Outer jacket -->
+                        <circle cx="100" cy="100" r="94" class="cc-jacket"/>
+                        <!-- Armor layer (dashed, rotates) -->
+                        <circle cx="100" cy="100" r="80" class="cc-armor"/>
+                        <!-- Screen layer (dashed, counter-rotates) -->
+                        <circle cx="100" cy="100" r="66" class="cc-screen"/>
+                        <!-- Insulation -->
+                        <circle cx="100" cy="100" r="50" class="cc-insulation"/>
+                        <!-- Semi-conductive -->
+                        <circle cx="100" cy="100" r="34" class="cc-semi"/>
+                        <!-- Conductor fill -->
+                        <circle cx="100" cy="100" r="22" fill="url(#conductorGrad)"/>
+                        <!-- Conductor ring -->
+                        <circle cx="100" cy="100" r="22" class="cc-conductor" filter="url(#glow-conductor)"/>
+                        <!-- Core -->
+                        <circle cx="100" cy="100" r="8" class="cc-core" filter="url(#glow-core)"/>
+                    </svg>
+                    <div class="cable-cross-label">
+                        <span class="cc-live-dot"></span>
+                        NYY-J · Querschnitt
+                    </div>
+                </div>
+                <div class="cable-specs">
+                    <div class="spec-item">
+                        <span class="spec-key">Nennspannung</span>
+                        <span class="spec-val">0,6 / 1 kV</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-key">Norm</span>
+                        <span class="spec-val">DIN VDE 0276</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-key">Leiter</span>
+                        <span class="spec-val">Cu · Kl. 2</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-key">Status</span>
+                        <span class="spec-val spec-live">
+                            <span class="live-pulse"></span>LIVE
+                        </span>
+                    </div>
+                </div>
             </div>
         </div>
+
+        <!-- Bottom stat bar -->
         <div class="hero-bottom-bar">
             <div class="hero-stat">
                 <strong>2024</strong><span>Gegründet in Duisburg</span>
@@ -72,6 +148,15 @@
             </div>
         </div>
     </section>
+
+    <!-- SECTION CONNECTOR -->
+    <div class="section-connector" aria-hidden="true">
+        <div class="sc-inner container">
+            <div class="sc-node"></div>
+            <svg class="sc-svg" preserveAspectRatio="none"><path d="M0 50% H100%" class="sc-line"/></svg>
+            <div class="sc-node"></div>
+        </div>
+    </div>
 
     <!-- LEISTUNGEN -->
     <section class="leistungen" id="leistungen">
@@ -110,6 +195,15 @@
         </div>
     </section>
 
+    <!-- SECTION CONNECTOR -->
+    <div class="section-connector" aria-hidden="true">
+        <div class="sc-inner container">
+            <div class="sc-node"></div>
+            <svg class="sc-svg" preserveAspectRatio="none"><path d="M0 50% H100%" class="sc-line"/></svg>
+            <div class="sc-node"></div>
+        </div>
+    </div>
+
     <!-- STANDORT -->
     <section class="standort">
         <div class="container">
@@ -117,7 +211,7 @@
                 <div class="standort-text" data-aos="fade-right">
                     <span class="section-label">Unser Standort</span>
                     <h2>Verwurzelt in Duisburg.<br>Tätig in ganz NRW.</h2>
-                    <p>Von Duisburg aus bedienen wir Kunden in der gesamten Region Nordrhein-Westfalen und darüber hinaus. Kurze Wege, schnelle Reaktionszeiten — das ist unser Versprechen an Sie.</p>
+                    <p>Von Duisburg aus bedienen wir Kunden in der gesamten Region Nordrhein-Westfalen und darüber hinaus. Kurze Wege, schnelle Reaktionszeiten.</p>
                     <div class="standort-tags">
                         <span><i class="fas fa-location-dot"></i> Duisburg</span>
                         <span><i class="fas fa-location-dot"></i> Essen</span>
@@ -148,24 +242,37 @@
         <div class="container">
             <div class="stats-grid">
                 <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stat-pulse"></div>
                     <span class="stat-number" data-target="250">0</span><span class="stat-suffix">+</span>
                     <span class="stat-label">Projekte abgeschlossen</span>
                 </div>
                 <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-pulse"></div>
                     <span class="stat-number" data-target="60">0</span><span class="stat-suffix">+</span>
                     <span class="stat-label">Zufriedene Kunden</span>
                 </div>
                 <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stat-pulse"></div>
                     <span class="stat-number" data-target="100">0</span><span class="stat-suffix">%</span>
                     <span class="stat-label">DIN VDE Normkonform</span>
                 </div>
                 <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stat-pulse"></div>
                     <span class="stat-number" data-target="24">0</span><span class="stat-suffix">h</span>
                     <span class="stat-label">Reaktionszeit</span>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- SECTION CONNECTOR -->
+    <div class="section-connector" aria-hidden="true">
+        <div class="sc-inner container">
+            <div class="sc-node"></div>
+            <svg class="sc-svg" preserveAspectRatio="none"><path d="M0 50% H100%" class="sc-line"/></svg>
+            <div class="sc-node"></div>
+        </div>
+    </div>
 
     <!-- PROJEKTE -->
     <section class="projekte" id="projekte">
@@ -236,6 +343,15 @@
             </div>
         </div>
     </section>
+
+    <!-- SECTION CONNECTOR -->
+    <div class="section-connector" aria-hidden="true">
+        <div class="sc-inner container">
+            <div class="sc-node"></div>
+            <svg class="sc-svg" preserveAspectRatio="none"><path d="M0 50% H100%" class="sc-line"/></svg>
+            <div class="sc-node"></div>
+        </div>
+    </div>
 
     <!-- ÜBER UNS -->
     <section class="ueber-uns" id="ueber-uns">
