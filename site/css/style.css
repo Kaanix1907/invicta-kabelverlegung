@@ -1164,7 +1164,7 @@ a.contact-detail__value:hover {
   }
 
   .section {
-    padding: 80px 0;
+    padding: 60px 0;
   }
 
   .nav__links,
@@ -1176,26 +1176,54 @@ a.contact-detail__value:hover {
     display: flex;
   }
 
+  /* Hero */
+  .hero__content {
+    min-height: auto;
+    padding-top: calc(var(--nav-height) + 24px);
+    padding-bottom: 48px;
+  }
+
   .hero__title {
-    font-size: clamp(36px, 9vw, 56px);
+    font-size: clamp(32px, 9vw, 48px);
   }
 
   .hero__content-inner {
     max-width: 100%;
   }
 
+  .hero__tag {
+    font-size: 11px;
+    margin-bottom: 16px;
+  }
+
+  .hero__subtitle {
+    font-size: 15px;
+    margin-bottom: 28px;
+  }
+
+  .hero__scroll {
+    display: none;
+  }
+
+  /* Services */
   .services-grid {
     grid-template-columns: 1fr;
     gap: 16px;
   }
 
   .service-card {
-    padding: 28px 24px;
+    padding: 24px 20px;
   }
 
+  .service-card__icon svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* About */
   .about-split {
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 36px;
   }
 
   .about-split__visual {
@@ -1206,26 +1234,38 @@ a.contact-detail__value:hover {
     aspect-ratio: 16 / 10;
   }
 
-  .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 36px;
+  .section__title {
+    font-size: clamp(24px, 6vw, 32px);
   }
 
+  /* Stats */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+
+  .stat__number {
+    font-size: clamp(32px, 8vw, 44px);
+  }
+
+  /* References */
   .logos-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .logo-item {
+    padding: 20px 12px;
   }
 
   .certs {
     flex-wrap: wrap;
+    gap: 12px;
   }
 
-  .contact-split {
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
-
-  .contact-form__row {
-    grid-template-columns: 1fr;
+  /* CTA Banner */
+  .cta-banner__title {
+    font-size: clamp(24px, 6vw, 32px);
   }
 
   .cta-banner__actions {
@@ -1233,15 +1273,34 @@ a.contact-detail__value:hover {
     align-items: center;
   }
 
+  /* Contact */
+  .contact-split {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .contact-form__row {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form {
+    padding: 24px 20px;
+  }
+
+  /* Footer */
   .footer__grid {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 28px;
+  }
+
+  .footer {
+    padding: 48px 0 24px;
   }
 }
 
 @media (max-width: 480px) {
-  .hero__subtitle {
-    font-size: 16px;
+  .hero__title {
+    font-size: clamp(28px, 8.5vw, 40px);
   }
 
   .hero__actions {
@@ -1254,16 +1313,27 @@ a.contact-detail__value:hover {
   }
 
   .stats-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
+    gap: 20px;
+  }
+
+  .stat__label {
+    font-size: 13px;
   }
 
   .section__header {
-    margin-bottom: 48px;
+    margin-bottom: 40px;
   }
 
-  .contact-form {
-    padding: 24px;
+  .section__desc {
+    font-size: 15px;
+  }
+
+  .nav__logo-mark {
+    font-size: 16px;
+  }
+
+  .nav__logo-sub {
+    font-size: 7px;
   }
 }
 

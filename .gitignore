@@ -1,0 +1,14 @@
+# Assets & Downloads
+*.zip
+*.mp4
+*.jpeg
+*.jpg.bak
+
+# Screenshots (dev only)
+screenshots/
+
+# OS
+.DS_Store
+
+# Env
+.env*
