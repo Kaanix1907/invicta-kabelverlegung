@@ -337,7 +337,7 @@ function initFrameSequence() {
   window.addEventListener('resize', resizeCanvas);
   resizeCanvas();
 
-  // --- Cover-fit drawing (desktop) / zoomed contain-fit (mobile) ---
+  // --- Cover-fit drawing (fills viewport completely, no gaps) ---
   function drawFrame(index) {
     const img = frames[index];
     if (!img || !img.complete) return;
@@ -350,30 +350,16 @@ function initFrameSequence() {
     const canvasRatio = cw / ch;
     let drawW, drawH, drawX, drawY;
 
-    if (window.innerWidth > 768) {
-      // Desktop: cover-fit
-      if (canvasRatio > imgRatio) {
-        drawW = cw;
-        drawH = cw / imgRatio;
-      } else {
-        drawH = ch;
-        drawW = ch * imgRatio;
-      }
-      drawX = (cw - drawW) / 2;
-      drawY = (ch - drawH) / 2;
+    // Cover-fit for all viewports — image fills canvas completely
+    if (canvasRatio > imgRatio) {
+      drawW = cw;
+      drawH = cw / imgRatio;
     } else {
-      // Mobile: zoomed contain-fit
-      const zoom = 1.2;
-      if (canvasRatio > imgRatio) {
-        drawH = ch * zoom;
-        drawW = drawH * imgRatio;
-      } else {
-        drawW = cw * zoom;
-        drawH = drawW / imgRatio;
-      }
-      drawX = (cw - drawW) / 2;
-      drawY = (ch - drawH) / 2;
+      drawH = ch;
+      drawW = ch * imgRatio;
     }
+    drawX = (cw - drawW) / 2;
+    drawY = (ch - drawH) / 2;
 
     ctx.drawImage(img, drawX, drawY, drawW, drawH);
   }

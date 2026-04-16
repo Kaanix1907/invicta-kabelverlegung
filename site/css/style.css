@@ -297,6 +297,29 @@ button {
   z-index: 1;
 }
 
+/* Gradient overlays for seamless dark-to-light transitions */
+.hero__sequence-sticky::before,
+.hero__sequence-sticky::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero__sequence-sticky::before {
+  top: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, var(--color-dark), transparent);
+}
+
+.hero__sequence-sticky::after {
+  bottom: 0;
+  height: 120px;
+  background: linear-gradient(to top, var(--color-dark), transparent);
+}
+
 /* --- Annotation Cards --- */
 .annotation-card {
   position: absolute;
@@ -452,7 +475,7 @@ button {
 }
 
 @media (max-width: 768px) {
-  .hero__sequence { height: 170vh; }
+  .hero__sequence { height: 260vh; }
 
   .annotation-card {
     bottom: 1.5vh;
