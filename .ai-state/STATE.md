@@ -10,7 +10,7 @@ Website für Invicta Kabelverlegung — One-Pager mit Scroll-Animation, deployed
 - [x] Scroll-driven Frame-Sequence-Animation (121 Frames, Canvas-basiert, GSAP ScrollTrigger)
 - [x] INVICTA Schriftzug erscheint bei ~85% Scroll-Fortschritt
 - [x] Annotation Cards (3 Stück) mit Progress-basiertem Show/Hide
-- [x] Mobile-Responsive Design (768px + 480px Breakpoints)
+- [x] Mobile-Responsive Design (Cover-Fit, Gradient-Overlays, 260vh Scroll-Höhe)
 - [x] Navigation mit Burger-Menu (Mobile)
 - [x] GSAP Scroll-Animationen (Fade-up, Fade-right, Fade-left, Counter)
 - [x] Kontaktformular (Frontend-Validierung)
@@ -35,9 +35,11 @@ _Nichts bekannt_
 - Stack: Vanilla HTML/CSS/JS + GSAP ScrollTrigger (kein Next.js)
 - Server lokal: Python HTTP auf Port 8080 (aus site/ Ordner)
 - 121 Frames im site/frames/ Ordner (JPEGs, ~20MB)
-- Scroll-Höhe Animation: 220vh (Desktop), 190vh (Tablet), 170vh (Mobile)
-- Background Animation: #eaeaea (leicht off-white, NICHT dunkel)
+- Scroll-Höhe Animation: 220vh (Desktop), 190vh (Tablet), 260vh (Mobile)
+- Background Animation: #FFFFFF (reines Weiß, passend zum Video-Hintergrund)
+- Gradient-Overlays oben/unten (120px) für nahtlosen Übergang dunkel → weiß → dunkel
+- Cover-Fit auf allen Viewports (kein contain-fit mehr auf Mobile)
 - INVICTA Schriftzug: position absolute im sticky Wrapper, scrollt mit weg
 - Video-Prompts: prompts-variation-1.html + prompts-variation-2.html (je max 2500 Zeichen)
 - Desktop .command: /Users/test/Desktop/Invicta Website öffnen.command (Port 8080)
-- Mobile-Optimierung abgeschlossen und geprüft via Puppeteer Screenshots
+- Letzter Fix: Weißton-Unterschied zwischen Video und Hintergrund behoben (#eaeaea → #FFFFFF)
