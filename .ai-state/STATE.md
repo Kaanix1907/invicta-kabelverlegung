@@ -40,6 +40,7 @@ _Nichts bekannt_
   - Screenshot-Workflow referenziert (Port 8080, 2-Runden-Regel)
   - Security-&-Privacy-Audit-Block in Phase 5 ergänzt (noopener, XSS, Secrets, DSGVO, robots.txt)
   - Description: 4→5 Phasen korrigiert
+- **Guardrails komplett in Skill migriert** — Design-Regeln, Screenshot-Workflow, ImageMagick, Plugin-Skill-Tabelle sind jetzt alle im SKILL.md. Parent `Webseiten-Builder/CLAUDE.md` auf Minimal-Stub reduziert (nur Verweis auf den Skill). Master-Workflow greift jetzt ortsunabhängig.
 
 **Stand 2026-04-16:**
 - Website live: https://kaanix1907.github.io/invicta-kabelverlegung/
