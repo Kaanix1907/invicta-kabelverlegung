@@ -1,9 +1,10 @@
 # State — Tugkan Website
 
-**Zuletzt aktualisiert:** 2026-04-16
+**Zuletzt aktualisiert:** 2026-04-20
 
 ## Aktueller Focus
 Website für Invicta Kabelverlegung — One-Pager mit Scroll-Animation, deployed auf GitHub Pages.
+Master-Workflow konsolidiert und von Next.js-Altlasten befreit.
 
 ## Was funktioniert
 - [x] Kompletter One-Pager (Hero, Services, About, Stats, Referenzen, CTA, Kontakt, Footer)
@@ -28,6 +29,17 @@ _Nichts bekannt_
 
 ---
 ## Handoff (letzter Stand für nächste Session)
+
+**Stand 2026-04-20:**
+- Firecrawl-API-Key aktualisiert + getestet (Scrape von example.com erfolgreich, 1 Credit)
+- `Webseiten-Builder/CLAUDE.md` aufgeräumt: Next.js-Altlasten raus, Master-Workflow + stackunabhängige Guardrails + Screenshot-Workflow (Port 8080) + ImageMagick + "Kommentare auf Deutsch" behalten
+- `~/.claude/skills/website-builder/SKILL.md` gefixt:
+  - `allowed-tools` um Firecrawl-MCP-Tools erweitert (war kritischer Bug — Skill konnte Firecrawl nicht aufrufen)
+  - PREFLIGHT-Section ergänzt (Sprache, `.ai-state/`-Check, Firecrawl-Fallback, Output-Ordner)
+  - README-Widerspruch zur globalen Regel entfernt
+  - Screenshot-Workflow referenziert (Port 8080, 2-Runden-Regel)
+  - Security-&-Privacy-Audit-Block in Phase 5 ergänzt (noopener, XSS, Secrets, DSGVO, robots.txt)
+  - Description: 4→5 Phasen korrigiert
 
 **Stand 2026-04-16:**
 - Website live: https://kaanix1907.github.io/invicta-kabelverlegung/
