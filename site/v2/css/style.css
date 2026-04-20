@@ -1390,31 +1390,15 @@ a.contact-detail__value:hover {
    stattdessen hero__outro weiter unten */
 .hero--v2 .hero__content { display: none; }
 
-/* Scroll-Animation Höhe — länger damit die letzten 28% (Halt-Phase mit fertigem Zustand) spürbar sind */
-.hero__sequence--v2 { height: 340vh; }
+/* Scroll-Animation Höhe — Intro-Hold (~14%) + schnelle Animation (~48%) + End-Hold (~38%) */
+.hero__sequence--v2 { height: 260vh; }
 
 @media (max-width: 1024px) {
-  .hero__sequence--v2 { height: 280vh; }
-}
-
-/* "Fertig"-Card — leicht anderes Styling zur Abgrenzung */
-.annotation-card--done {
-  border-color: rgba(232, 166, 48, 0.25);
-  background: rgba(232, 166, 48, 0.06);
-}
-
-.annotation-card--done .card-number {
-  color: var(--color-secondary);
-  font-size: 1.1rem;
-  font-weight: 700;
-}
-
-.annotation-card--done .card-title {
-  color: var(--color-white);
+  .hero__sequence--v2 { height: 220vh; }
 }
 
 @media (max-width: 768px) {
-  .hero__sequence--v2 { height: 360vh; }
+  .hero__sequence--v2 { height: 280vh; }
 }
 
 /* Top-Logo — großer INVICTA-Schriftzug oben im Canvas */

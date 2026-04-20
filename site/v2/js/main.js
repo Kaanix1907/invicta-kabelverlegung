@@ -302,27 +302,15 @@ function initFrameSequence() {
   if (!canvas) return;
 
   const ctx = canvas.getContext('2d');
-  const FRAME_COUNT = 145;
+  const FRAME_COUNT = 121;
   const frames = [];
   let loadedFrames = 0;
   let currentFrame = -1;
-  let targetFrame = 0;
   let animating = false;
 
   // Loader elements
   const loader = document.getElementById('frameLoader');
   const loaderBar = document.getElementById('loaderBar');
-
-  // Annotation cards
-  const cards = document.querySelectorAll('.annotation-card');
-  const SNAP_ZONES = [];
-
-  cards.forEach(card => {
-    SNAP_ZONES.push({
-      show: parseFloat(card.dataset.show),
-      hide: parseFloat(card.dataset.hide)
-    });
-  });
 
   // --- Canvas resize with Retina support ---
   function resizeCanvas() {
@@ -373,37 +361,33 @@ function initFrameSequence() {
   let currentProgress = 0;
   let lastLogoOpacity = -1;
 
-  // --- Render Logo + Annotation Cards based on smoothed progress ---
+  // Timing-Phasen (progress 0..1 über den sticky Scroll-Bereich):
+  //   0.00 – 0.14  Intro-Hold  → Logo voll sichtbar, Frame 0
+  //   0.14 – 0.62  Animation   → Frames 0..MAX, Logo fadet weg (0.14-0.34)
+  //   0.62 – 1.00  End-Hold    → finaler Frame bleibt sichtbar
+  const FRAME_START = 0.14;
+  const FRAME_END = 0.62;
+  const LOGO_FADE_END = 0.34;
+
   function renderProgressOverlay(progress) {
-    cards.forEach((card, i) => {
-      const zone = SNAP_ZONES[i];
-      const visible = progress >= zone.show && progress <= zone.hide;
-      card.classList.toggle('visible', visible);
-    });
+    if (!sequenceLogoTop) return;
+    // Logo voll sichtbar bis FRAME_START, fadet dann bis LOGO_FADE_END aus
+    const fadeProgress = Math.min(1, Math.max(0, (progress - FRAME_START) / (LOGO_FADE_END - FRAME_START)));
+    const eased = 1 - Math.pow(1 - fadeProgress, 3);
+    const opacity = 1 - eased;
+    const scale = 1 - eased * 0.25;
+    const translateY = -eased * 90;
 
-    if (sequenceLogoTop) {
-      // Logo full bei progress 0, komplett weg bei progress ~0.35
-      const logoProgress = Math.min(1, progress / 0.35);
-      // easeOutCubic für smooteren Fade
-      const eased = 1 - Math.pow(1 - logoProgress, 3);
-      const opacity = Math.max(0, 1 - eased);
-      const scale = 1 - eased * 0.25;
-      const translateY = -eased * 90;
-
-      // Nur schreiben wenn sich opacity spürbar geändert hat (Performance)
-      if (Math.abs(opacity - lastLogoOpacity) > 0.002) {
-        sequenceLogoTop.style.opacity = opacity.toFixed(3);
-        sequenceLogoTop.style.transform =
-          `translate3d(-50%, ${translateY.toFixed(1)}px, 0) scale(${scale.toFixed(3)})`;
-        lastLogoOpacity = opacity;
-      }
+    if (Math.abs(opacity - lastLogoOpacity) > 0.002) {
+      sequenceLogoTop.style.opacity = opacity.toFixed(3);
+      sequenceLogoTop.style.transform =
+        `translate3d(-50%, ${translateY.toFixed(1)}px, 0) scale(${scale.toFixed(3)})`;
+      lastLogoOpacity = opacity;
     }
   }
 
-  // --- Unified rAF loop: lerp progress + frame together ---
   function tick() {
-    // Lerp factor 0.18 = balanced smoothness vs responsiveness
-    const LERP = 0.18;
+    const LERP = 0.2;
     const progressDiff = targetProgress - currentProgress;
 
     if (Math.abs(progressDiff) > 0.0005) {
@@ -412,10 +396,15 @@ function initFrameSequence() {
       currentProgress = targetProgress;
     }
 
-    // Frame-Mapping: Animation läuft bis progress 0.72, danach 0.72-1.0 hält
-    // den letzten Frame (finaler Zustand bleibt ~30% des Scrolls sichtbar)
-    const FRAME_END_AT = 0.72;
-    const frameProgress = Math.min(1, currentProgress / FRAME_END_AT);
+    // Frame 0 während Intro-Hold, animiert zwischen FRAME_START..FRAME_END, dann gehalten
+    let frameProgress;
+    if (currentProgress <= FRAME_START) {
+      frameProgress = 0;
+    } else if (currentProgress >= FRAME_END) {
+      frameProgress = 1;
+    } else {
+      frameProgress = (currentProgress - FRAME_START) / (FRAME_END - FRAME_START);
+    }
     const newTarget = Math.min(FRAME_COUNT - 1, Math.floor(frameProgress * FRAME_COUNT));
     if (newTarget !== currentFrame) {
       currentFrame = newTarget;
@@ -424,7 +413,6 @@ function initFrameSequence() {
 
     renderProgressOverlay(currentProgress);
 
-    // Loop läuft solange progress sich ändert
     if (currentProgress !== targetProgress) {
       requestAnimationFrame(tick);
     } else {
