@@ -355,7 +355,9 @@ function initFrameSequence() {
     let drawW, drawH, drawX, drawY;
 
     if (isMobile) {
-      // contain-fit: komplettes Frame sichtbar, aspect-correct, kein Crop
+      // Zoomed contain-fit: Basis ist contain (volle Breite), dann hochskaliert
+      // → Video integriert sich deutlich besser, schwarze Balken werden klein,
+      //   Szene bleibt fast komplett sichtbar (nur minimaler Horizontal-Crop).
       if (canvasRatio > imgRatio) {
         drawH = ch;
         drawW = ch * imgRatio;
@@ -363,6 +365,12 @@ function initFrameSequence() {
         drawW = cw;
         drawH = cw / imgRatio;
       }
+      // Scale-Faktor so wählen, dass Video ~72% der Viewport-Höhe füllt.
+      // Ergebnis: kleiner Letterbox oben/unten, seitliche Kanten leicht gecropped.
+      const targetFillRatio = 0.72;
+      const scale = (ch * targetFillRatio) / drawH;
+      drawW *= scale;
+      drawH *= scale;
     } else {
       // cover-fit: füllt gesamten Canvas, schneidet bei Bedarf
       if (canvasRatio > imgRatio) {
