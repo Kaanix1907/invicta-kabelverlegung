@@ -6,6 +6,8 @@
 - [ ] Tugkan-Feedback einarbeiten
 - [ ] Echte Kontaktdaten eintragen (Telefon, Email)
 - [ ] About-Sektion: Placeholder durch echtes Bild ersetzen
+- [ ] V3/V4 Prompts in Higgs Field + Nano Banana testen (Img2Img-Workflow für Before/After)
+- [ ] Nach Video-Generierung: Frame-Extraktion + zweite Deploy-Variante für Tugkan-Feedback
 
 ## Backlog
 - [ ] Custom Domain einrichten (falls gewünscht)
@@ -17,6 +19,9 @@
 - [x] CLAUDE.md befüllen
 - [x] 12K Site Builder Skill ausgeführt (One-Pager komplett)
 - [x] Image Generator Skill — Prompts für 2 Video-Varianten erstellt
+- [x] V3 Prompts erstellt (9:16 Top-Down, H-Shape Trench, White Void)
+- [x] V4 Prompts erstellt (16:9 Cinematic Drone, Premium Automotive Campus BMW/Audi-Style)
+- [x] Prompt B als echter Img2Img-Edit-Prompt umformuliert (V3+V4)
 - [x] 3D Animation Creator Skill — Scroll-driven Frame Sequence implementiert
 - [x] Video zu Frames extrahiert (FFmpeg, 121 Frames)
 - [x] Smooth Frame-Interpolation (Lerp statt direktes Springen)
