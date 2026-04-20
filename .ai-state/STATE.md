@@ -1,6 +1,6 @@
 # State — Tugkan Website
 
-**Zuletzt aktualisiert:** 2026-04-20 (Session 3)
+**Zuletzt aktualisiert:** 2026-04-20 (Session 4)
 
 ## Aktueller Focus
 Website für Invicta Kabelverlegung — One-Pager mit Scroll-Animation, deployed auf GitHub Pages.
@@ -29,6 +29,12 @@ _Nichts bekannt_
 
 ---
 ## Handoff (letzter Stand für nächste Session)
+
+**Stand 2026-04-20 (Session 4 — V2 Mobile-Integration + V3 Fun-Version):**
+- **V2 Mobile-Integration gefixt**: Reines contain-fit zeigte nur ~26% Video-Streifen mit massiven schwarzen Balken. Neue Lösung: **zoomed contain-fit** mit 72% Viewport-Fill-Ratio (`site/v2/js/main.js` drawFrame). Video füllt jetzt ~72% der Viewport-Höhe, Letterbox cinematisch-dünn (~14% oben/unten), Szene bleibt zentriert sichtbar. Horizontal-Crop bewusst in Kauf genommen, da Drohnenaufnahme zentriert ist.
+- **SKILL.md Mobile-Regel aktualisiert** (~/.claude/skills/website-builder/SKILL.md): "Fit-Mode (KRITISCH)"-Sektion erweitert um zoomed contain-fit Formel + 0.72 Ratio als Cross-Project-Pattern für Landscape-Video-in-Portrait-Viewport.
+- **V3 Fun-Version erstellt** (`site/v3/`): Standalone Spaß-Version neben V1+V2. "INVICTA SCHWANZVERLEGUNG"-Branding, Texte mit Wuff/Chihuahua/Schwanz-Variationen, alle Bilder via dog.ceo API als echte Chihuahua-Fotos befüllt (hero, about, 4 service-cards, 6 logos, CTA-bg). Canvas entfernt, lädt keine Video-Frames → lightweight. `noindex, nofollow` gesetzt. Live unter https://kaanix1907.github.io/invicta-kabelverlegung/v3/
+- **V1 und V2 bleiben unberührt**.
 
 **Stand 2026-04-20 (Session 3 — V3/V4 Prompts + Consistency-Workflow):**
 - **prompts-variation-3.html**: 9:16 Top-Down, 90° Bird's Eye, H-Shape Trench-Layout, weißer #FFFFFF Void Background. A: 2322 chars, B: 2186 chars, C: 2415 chars.
