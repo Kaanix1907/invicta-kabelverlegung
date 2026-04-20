@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>INVICTA Schwanzverlegung — Fun Version</title>
+  <meta name="description" content="Wuff wuff Chihuahua Schwanz — Spaß-Version der Seite. Bitte nicht ernst nehmen.">
+  <meta name="robots" content="noindex, nofollow">
+
+  <meta property="og:title" content="INVICTA SCHWANZVERLEGUNG — Wuff.">
+  <meta property="og:description" content="Wuff wuff. Schwanz wedelt.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* V3 Fun overrides — Chihuahua-Bilder überall */
+    .hero--v2 .hero__sequence-sticky { background: #1a1a1a; }
+    .hero--v2 #frameCanvas { display: none !important; }
+    .chihuahua-hero-img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      filter: brightness(0.85) saturate(1.1);
+      z-index: 0;
+    }
+    .hero--v2 .hero__sequence-sticky::before,
+    .hero--v2 .hero__sequence-sticky::after {
+      z-index: 2;
+    }
+    .sequence-logo-top { z-index: 3; }
+    .frame-loader { display: none !important; }
+
+    .chihuahua-card-img {
+      width: 100%; height: 180px; object-fit: cover;
+      border-radius: 14px; margin-bottom: 18px;
+      background: #f2f2f2;
+    }
+    .chihuahua-about-img {
+      width: 100%; height: 100%; object-fit: cover;
+      border-radius: 18px;
+      min-height: 420px;
+    }
+    .logo-item {
+      overflow: hidden;
+      padding: 0 !important;
+    }
+    .chihuahua-logo-img {
+      width: 100%; height: 90px; object-fit: cover;
+      display: block;
+      filter: grayscale(0.3);
+    }
+    .chihuahua-logo-img:hover { filter: grayscale(0); }
+
+    .cta-banner__bg::after {
+      content: "";
+      position: absolute; inset: 0;
+      background-image: var(--chihuahua-cta-bg);
+      background-size: cover;
+      background-position: center;
+      opacity: 0.22;
+      mix-blend-mode: luminosity;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">
+        <span class="nav__logo-mark">INVICTA</span>
+        <span class="nav__logo-sub">SCHWANZVERLEGUNG</span>
+      </a>
+
+      <ul class="nav__links" id="navLinks">
+        <li><a href="#leistungen">Wuffungen</a></li>
+        <li><a href="#ueber">Über den Schwanz</a></li>
+        <li><a href="#referenzen">Wuff-Referenzen</a></li>
+        <li><a href="#kontakt">Wuff-Kontakt</a></li>
+      </ul>
+
+      <a href="#kontakt" class="nav__cta">Wuff senden</a>
+
+      <button class="nav__burger" id="navBurger" aria-label="Menü öffnen">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-menu__links">
+      <li><a href="#leistungen">Wuffungen</a></li>
+      <li><a href="#ueber">Über den Schwanz</a></li>
+      <li><a href="#referenzen">Wuff-Referenzen</a></li>
+      <li><a href="#kontakt">Wuff-Kontakt</a></li>
+    </ul>
+    <a href="#kontakt" class="mobile-menu__cta">Wuff senden</a>
+  </div>
+
+
+  <!-- ========== HERO (V3 — Fun) ========== -->
+  <section class="hero hero--v2" id="hero">
+
+    <div class="hero__sequence hero__sequence--v2" id="heroSequence">
+      <div class="hero__sequence-sticky">
+        <img class="chihuahua-hero-img chihuahua-img" data-ch-role="hero" alt="Chihuahua">
+
+        <div class="sequence-logo-top" id="sequenceLogoTop">
+          <span class="sequence-logo-top__name">INVICTA</span>
+          <span class="sequence-logo-top__sub">SCHWANZVERLEGUNG</span>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="hero__outro" id="heroOutro">
+      <div class="hero__outro-inner">
+        <p class="hero__tag">INVICTA Schwanzverlegung — Duisburg</p>
+        <h1 class="hero__title">
+          <span class="hero__title-line">Schwanzverlegung.</span>
+          <span class="hero__title-line hero__title-line--accent">Ohne Kompromisse. Wuff.</span>
+        </h1>
+        <p class="hero__subtitle">Chihuahua-Präzision für Wuffs jeder Größenordnung — von Duisburg bis zur nächsten Laterne.</p>
+        <div class="hero__actions">
+          <a href="#kontakt" class="btn btn--primary">Wuff besprechen</a>
+          <a href="#leistungen" class="btn btn--ghost">Wuffungen ansehen</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__scroll">
+      <div class="hero__scroll-line"></div>
+      <span class="hero__scroll-text">Wuff</span>
+    </div>
+  </section>
+
+
+  <!-- ========== LEISTUNGEN ========== -->
+  <section class="section section--light" id="leistungen">
+    <div class="container">
+      <div class="section__header">
+        <p class="section__tag">Was der Chihuahua tut</p>
+        <h2 class="section__title">Unsere Wuffungen</h2>
+        <p class="section__desc">Vom Wedeln über das Bellen bis zum fachgerechten Schwanzheben — alles aus einer Pfote.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card" data-animate="card">
+          <img class="chihuahua-card-img chihuahua-img" data-ch-role="card" alt="Chihuahua">
+          <h3 class="service-card__title">Schwanzverlegung</h3>
+          <p class="service-card__text">Kurzer Schwanz, langer Schwanz, mittlerer Schwanz — wir verlegen in jeder Frequenz. Wuff präzise, termingerecht, mit Herz.</p>
+        </div>
+
+        <div class="service-card" data-animate="card">
+          <img class="chihuahua-card-img chihuahua-img" data-ch-role="card" alt="Chihuahua">
+          <h3 class="service-card__title">Wuffmontage</h3>
+          <p class="service-card__text">Fachgerechtes Wuffen aller Lautstärken. Von Briefträger-Warnungen über Türklingel-Terror bis zu Mitternachts-Arien.</p>
+        </div>
+
+        <div class="service-card" data-animate="card">
+          <img class="chihuahua-card-img chihuahua-img" data-ch-role="card" alt="Chihuahua">
+          <h3 class="service-card__title">Schwanzdemontage</h3>
+          <p class="service-card__text">Professionelles Einklappen des Schwanzes in schwierigen Situationen. Sicher, diskret, dokumentiert.</p>
+        </div>
+
+        <div class="service-card" data-animate="card">
+          <img class="chihuahua-card-img chihuahua-img" data-ch-role="card" alt="Chihuahua">
+          <h3 class="service-card__title">Wuff-Beratung</h3>
+          <p class="service-card__text">Individuelles Wuff-Konzept vor Projektstart. Wir analysieren, bellen und optimieren — bevor der erste Schwanz verlegt wird.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== ÜBER UNS ========== -->
+  <section class="section section--dark" id="ueber">
+    <div class="container">
+      <div class="about-split">
+        <div class="about-split__content" data-animate="fade-right">
+          <p class="section__tag">Wer der Chihuahua ist</p>
+          <h2 class="section__title">INVICTA steht für<br><span class="text--accent">unbesiegt. Wuff.</span></h2>
+          <p class="about-split__text">Wir sind keine Firma, die Schwänze verlegt. Wir sind Spezialisten, die Wuffe schaffen. Mit einem Rudel aus erfahrenen Chihuahuas, modernstem Futter und dem Anspruch, jeden Wuff besser abzuschließen als den letzten.</p>
+          <p class="about-split__text">Von Duisburg aus wedeln wir deutschlandweit und europaweit — für Briefträger, Nachbarn und Staubsauger. Schwanz-zertifiziert, termingerecht, ohne Kompromisse. Wuff wuff.</p>
+          <a href="#kontakt" class="btn btn--secondary">Mehr wuffen</a>
+        </div>
+        <div class="about-split__visual" data-animate="fade-left">
+          <img class="chihuahua-about-img chihuahua-img" data-ch-role="about" alt="Chihuahua Portrait">
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== ZAHLEN ========== -->
+  <section class="section section--light" id="zahlen">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat" data-animate="counter">
+          <span class="stat__number" data-target="500">0</span>
+          <span class="stat__unit">+</span>
+          <p class="stat__label">Abgeschlossene Wuffungen</p>
+        </div>
+        <div class="stat" data-animate="counter">
+          <span class="stat__number" data-target="10">0</span>
+          <span class="stat__unit">+</span>
+          <p class="stat__label">Jahre Schwanzerfahrung</p>
+        </div>
+        <div class="stat" data-animate="counter">
+          <span class="stat__number" data-target="50">0</span>
+          <span class="stat__unit">k</span>
+          <p class="stat__label">Meter Schwanz verlegt</p>
+        </div>
+        <div class="stat" data-animate="counter">
+          <span class="stat__number" data-target="15">0</span>
+          <span class="stat__unit">+</span>
+          <p class="stat__label">Briefträger verscheucht</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== REFERENZEN ========== -->
+  <section class="section section--dark" id="referenzen">
+    <div class="container">
+      <div class="section__header">
+        <p class="section__tag">Vertrauen</p>
+        <h2 class="section__title">Wuff-Projekte & Schwanz-Referenzen</h2>
+        <p class="section__desc">Namhafte Chihuahuas aus Region und Europa vertrauen auf unser Gewedel.</p>
+      </div>
+
+      <div class="logos-grid" data-animate="logos">
+        <div class="logo-item"><img class="chihuahua-logo-img chihuahua-img" data-ch-role="logo" alt="Chihuahua"></div>
+        <div class="logo-item"><img class="chihuahua-logo-img chihuahua-img" data-ch-role="logo" alt="Chihuahua"></div>
+        <div class="logo-item"><img class="chihuahua-logo-img chihuahua-img" data-ch-role="logo" alt="Chihuahua"></div>
+        <div class="logo-item"><img class="chihuahua-logo-img chihuahua-img" data-ch-role="logo" alt="Chihuahua"></div>
+        <div class="logo-item"><img class="chihuahua-logo-img chihuahua-img" data-ch-role="logo" alt="Chihuahua"></div>
+        <div class="logo-item"><img class="chihuahua-logo-img chihuahua-img" data-ch-role="logo" alt="Chihuahua"></div>
+      </div>
+
+      <div class="certs" data-animate="fade-up">
+        <div class="cert-badge">
+          <span class="cert-badge__icon">WUF</span>
+          <span class="cert-badge__label">Zertifiziert</span>
+        </div>
+        <div class="cert-badge">
+          <span class="cert-badge__icon">SCH</span>
+          <span class="cert-badge__label">Schwanz-geprüft</span>
+        </div>
+        <div class="cert-badge">
+          <span class="cert-badge__icon">CHI</span>
+          <span class="cert-badge__label">Chihuahua-Stamp</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== CTA BANNER ========== -->
+  <section class="cta-banner" id="ctaBanner">
+    <div class="cta-banner__bg" id="ctaBannerBg"></div>
+    <div class="container">
+      <div class="cta-banner__content" data-animate="fade-up">
+        <h2 class="cta-banner__title">Dein nächstes Wuffprojekt<br>beginnt mit einem Bellen.</h2>
+        <p class="cta-banner__text">Erzähl uns von deinem Schwanzvorhaben. Wir wuffen dich innerhalb von 24 Stunden zurück.</p>
+        <div class="cta-banner__actions">
+          <a href="#kontakt" class="btn btn--primary btn--large">Wuff senden</a>
+          <a href="tel:+49XXXXXXXXX" class="btn btn--ghost btn--large">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            Jetzt bellen
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== KONTAKT ========== -->
+  <section class="section section--light" id="kontakt">
+    <div class="container">
+      <div class="contact-split">
+        <div class="contact-split__info" data-animate="fade-right">
+          <p class="section__tag">Wuff-Kontakt</p>
+          <h2 class="section__title">Wuff mit<br>uns.</h2>
+          <div class="contact-details">
+            <div class="contact-detail">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              <div>
+                <p class="contact-detail__label">Wuff-Telefon</p>
+                <a href="tel:+49XXXXXXXXX" class="contact-detail__value">+49 (0) WUF WUFFFFF</a>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+              <div>
+                <p class="contact-detail__label">Wuff-Mail</p>
+                <a href="mailto:wuff@invicta-schwanzverlegung.de" class="contact-detail__value">wuff@invicta-schwanzverlegung.de</a>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              <div>
+                <p class="contact-detail__label">Hundehütte</p>
+                <p class="contact-detail__value">Duisburg, NRW</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form" data-animate="fade-left" id="contactForm">
+          <div class="contact-form__row">
+            <div class="form-group">
+              <label for="name" class="form-label">Hundename *</label>
+              <input type="text" id="name" name="name" class="form-input" required>
+            </div>
+            <div class="form-group">
+              <label for="firma" class="form-label">Rudel</label>
+              <input type="text" id="firma" name="firma" class="form-input">
+            </div>
+          </div>
+          <div class="contact-form__row">
+            <div class="form-group">
+              <label for="email" class="form-label">Wuff-Mail *</label>
+              <input type="email" id="email" name="email" class="form-input" required>
+            </div>
+            <div class="form-group">
+              <label for="telefon" class="form-label">Wuff-Telefon</label>
+              <input type="tel" id="telefon" name="telefon" class="form-input">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="nachricht" class="form-label">Dein Wuff *</label>
+            <textarea id="nachricht" name="nachricht" class="form-input form-input--textarea" rows="5" required placeholder="Wuff wuff Schwanz Chihuahua..."></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full">Wuff absenden</button>
+          <p class="contact-form__privacy">Mit dem Wuffen stimmst du unserer <a href="#" title="Lutsch mein Penis">Schwanz-Datenschutzerklärung</a> zu.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="/" class="nav__logo">
+            <span class="nav__logo-mark">INVICTA</span>
+            <span class="nav__logo-sub">SCHWANZVERLEGUNG</span>
+          </a>
+          <p class="footer__tagline">Schwanzverlegung. Ohne Kompromisse. Wuff.</p>
+        </div>
+
+        <div class="footer__col">
+          <h4 class="footer__heading">Wuff-Navigation</h4>
+          <ul class="footer__links">
+            <li><a href="#leistungen">Wuffungen</a></li>
+            <li><a href="#ueber">Über den Schwanz</a></li>
+            <li><a href="#referenzen">Wuff-Referenzen</a></li>
+            <li><a href="#kontakt">Wuff-Kontakt</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4 class="footer__heading">Wuff-Kontakt</h4>
+          <ul class="footer__links">
+            <li><a href="tel:+49XXXXXXXXX">+49 (0) WUF WUFFFFF</a></li>
+            <li><a href="mailto:wuff@invicta-schwanzverlegung.de">wuff@invicta-schwanzverlegung.de</a></li>
+            <li>Duisburg, NRW — Hundehütte</li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4 class="footer__heading">Rechtliches</h4>
+          <ul class="footer__links">
+            <li><a href="#" title="Lutsch mein Penis">Wuffimpressum</a></li>
+            <li><a href="#">Schwanz-Datenschutz</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p>&copy; 2026 INVICTA Schwanzverlegung. Fun-Version. Wuff wuff. <span style="opacity:0.35;font-size:10px;letter-spacing:0.3em;">LUTSCH MEIN PENIS</span></p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- V3 Chihuahua-Bild-Loader: füllt alle .chihuahua-img Elemente mit Chihuahua-Fotos aus dog.ceo -->
+  <script>
+    (async function loadChihuahuas() {
+      const imgs = document.querySelectorAll('.chihuahua-img');
+      const needed = imgs.length + 4; // puffer für CTA bg etc.
+      try {
+        const res = await fetch(`https://dog.ceo/api/breed/chihuahua/images/random/${needed}`);
+        const data = await res.json();
+        if (data.status !== 'success' || !Array.isArray(data.message)) throw new Error('bad response');
+        const urls = data.message;
+        imgs.forEach((img, i) => {
+          img.src = urls[i % urls.length];
+          img.loading = 'lazy';
+        });
+        // CTA-Banner Background
+        const ctaBg = document.getElementById('ctaBannerBg');
+        if (ctaBg) {
+          ctaBg.style.setProperty('--chihuahua-cta-bg', `url(${urls[urls.length - 1]})`);
+        }
+      } catch (e) {
+        console.warn('Chihuahua-API nicht erreichbar, fallback aktiv:', e);
+        imgs.forEach((img) => {
+          img.alt = 'Chihuahua (offline)';
+          img.style.background = 'linear-gradient(135deg, #F5A623, #E89A1F)';
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
