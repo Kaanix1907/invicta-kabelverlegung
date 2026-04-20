@@ -366,9 +366,15 @@ function initFrameSequence() {
 
   // V2 — Top-Logo: oben sichtbar am Start, fadet + schrumpft beim Scrollen weg
   const sequenceLogoTop = document.getElementById('sequenceLogoTop');
+  const heroSection = document.querySelector('.hero__sequence');
 
-  // --- Annotation card show/hide + top-logo scroll animation ---
-  function updateCards(progress) {
+  // Progress wird smooth Richtung targetProgress gelerpt — für flüssige Animationen
+  let targetProgress = 0;
+  let currentProgress = 0;
+  let lastLogoOpacity = -1;
+
+  // --- Render Logo + Annotation Cards based on smoothed progress ---
+  function renderProgressOverlay(progress) {
     cards.forEach((card, i) => {
       const zone = SNAP_ZONES[i];
       const visible = progress >= zone.show && progress <= zone.hide;
@@ -378,46 +384,63 @@ function initFrameSequence() {
     if (sequenceLogoTop) {
       // Logo full bei progress 0, komplett weg bei progress ~0.35
       const logoProgress = Math.min(1, progress / 0.35);
-      const opacity = Math.max(0, 1 - logoProgress);
-      const scale = 1 - logoProgress * 0.25;
-      const translateY = -logoProgress * 90;
-      sequenceLogoTop.style.opacity = opacity.toFixed(3);
-      sequenceLogoTop.style.transform =
-        `translateX(-50%) translateY(${translateY.toFixed(1)}px) scale(${scale.toFixed(3)})`;
+      // easeOutCubic für smooteren Fade
+      const eased = 1 - Math.pow(1 - logoProgress, 3);
+      const opacity = Math.max(0, 1 - eased);
+      const scale = 1 - eased * 0.25;
+      const translateY = -eased * 90;
+
+      // Nur schreiben wenn sich opacity spürbar geändert hat (Performance)
+      if (Math.abs(opacity - lastLogoOpacity) > 0.002) {
+        sequenceLogoTop.style.opacity = opacity.toFixed(3);
+        sequenceLogoTop.style.transform =
+          `translate3d(-50%, ${translateY.toFixed(1)}px, 0) scale(${scale.toFixed(3)})`;
+        lastLogoOpacity = opacity;
+      }
     }
   }
 
-  // --- Smooth frame interpolation loop ---
-  function smoothDraw() {
-    if (currentFrame !== targetFrame) {
-      // Lerp toward target for smoothness
-      if (currentFrame < targetFrame) {
-        currentFrame = Math.min(currentFrame + 1, targetFrame);
-      } else {
-        currentFrame = Math.max(currentFrame - 1, targetFrame);
-      }
+  // --- Unified rAF loop: lerp progress + frame together ---
+  function tick() {
+    // Lerp factor 0.18 = balanced smoothness vs responsiveness
+    const LERP = 0.18;
+    const progressDiff = targetProgress - currentProgress;
+
+    if (Math.abs(progressDiff) > 0.0005) {
+      currentProgress += progressDiff * LERP;
+    } else {
+      currentProgress = targetProgress;
+    }
+
+    // Frame-Mapping: Animation läuft bis progress 0.72, danach 0.72-1.0 hält
+    // den letzten Frame (finaler Zustand bleibt ~30% des Scrolls sichtbar)
+    const FRAME_END_AT = 0.72;
+    const frameProgress = Math.min(1, currentProgress / FRAME_END_AT);
+    const newTarget = Math.min(FRAME_COUNT - 1, Math.floor(frameProgress * FRAME_COUNT));
+    if (newTarget !== currentFrame) {
+      currentFrame = newTarget;
       drawFrame(currentFrame);
     }
-    if (currentFrame !== targetFrame) {
-      requestAnimationFrame(smoothDraw);
+
+    renderProgressOverlay(currentProgress);
+
+    // Loop läuft solange progress sich ändert
+    if (currentProgress !== targetProgress) {
+      requestAnimationFrame(tick);
     } else {
       animating = false;
     }
   }
 
-  // --- Scroll handler: map scroll position to frame ---
+  // --- Scroll handler: setzt nur targetProgress, Rest macht rAF-Loop ---
   function onScroll() {
-    const section = document.querySelector('.hero__sequence');
-    const rect = section.getBoundingClientRect();
-    const scrollableHeight = section.offsetHeight - window.innerHeight;
-    const progress = Math.min(1, Math.max(0, -rect.top / scrollableHeight));
-    targetFrame = Math.min(FRAME_COUNT - 1, Math.floor(progress * FRAME_COUNT));
-
-    updateCards(progress);
+    const rect = heroSection.getBoundingClientRect();
+    const scrollableHeight = heroSection.offsetHeight - window.innerHeight;
+    targetProgress = Math.min(1, Math.max(0, -rect.top / scrollableHeight));
 
     if (!animating) {
       animating = true;
-      requestAnimationFrame(smoothDraw);
+      requestAnimationFrame(tick);
     }
   }
 
