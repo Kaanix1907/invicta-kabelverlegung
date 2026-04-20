@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invicta Kabelverlegung — Version 2</title>
+  <meta name="description" content="Invicta Kabelverlegung aus Duisburg — industrielle Kabelverlegung, Kabelmontage und Demontage. Präzise, zuverlässig, europaweit.">
+
+  <meta property="og:title" content="Invicta Kabelverlegung — Kabelverlegung. Ohne Kompromisse.">
+  <meta property="og:description" content="Industrielle Kabelverlegung, Kabelmontage und Demontage aus Duisburg.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">
+        <span class="nav__logo-mark">INVICTA</span>
+        <span class="nav__logo-sub">KABELVERLEGUNG</span>
+      </a>
+
+      <ul class="nav__links" id="navLinks">
+        <li><a href="#leistungen">Leistungen</a></li>
+        <li><a href="#ueber">Über uns</a></li>
+        <li><a href="#referenzen">Referenzen</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+
+      <a href="#kontakt" class="nav__cta">Anfrage senden</a>
+
+      <button class="nav__burger" id="navBurger" aria-label="Menü öffnen">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-menu__links">
+      <li><a href="#leistungen">Leistungen</a></li>
+      <li><a href="#ueber">Über uns</a></li>
+      <li><a href="#referenzen">Referenzen</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+    <a href="#kontakt" class="mobile-menu__cta">Anfrage senden</a>
+  </div>
+
+
+  <!-- ========== HERO (V2) ========== -->
+  <section class="hero hero--v2" id="hero">
+
+    <!-- Scroll-Animierte Sequenz — Canvas Frame-Rendering -->
+    <div class="hero__sequence hero__sequence--v2" id="heroSequence">
+      <div class="hero__sequence-sticky">
+        <canvas id="frameCanvas"></canvas>
+
+        <!-- Großer INVICTA Schriftzug oben — sichtbar am Start, verschwindet beim Scrollen -->
+        <div class="sequence-logo-top" id="sequenceLogoTop">
+          <span class="sequence-logo-top__name">INVICTA</span>
+          <span class="sequence-logo-top__sub">KABELVERLEGUNG</span>
+        </div>
+
+        <!-- Annotation Cards -->
+        <div class="annotation-card" data-show="0.18" data-hide="0.38">
+          <div class="card-number">01</div>
+          <div class="card-body">
+            <h3 class="card-title">Industrielle Kabel</h3>
+            <p class="card-desc">Starkstrom, Steuer- und Datenkabel — jeder Querschnitt, jede Umgebung.</p>
+          </div>
+        </div>
+        <div class="annotation-card" data-show="0.42" data-hide="0.62">
+          <div class="card-number">02</div>
+          <div class="card-body">
+            <h3 class="card-title">Präzise Verbindung</h3>
+            <p class="card-desc">Fachgerechte Montage mit zertifizierten Verfahren und modernster Technik.</p>
+          </div>
+        </div>
+        <div class="annotation-card" data-show="0.68" data-hide="0.88">
+          <div class="card-number">03</div>
+          <div class="card-body">
+            <h3 class="card-title">Ohne Kompromisse</h3>
+            <p class="card-desc">SCC-zertifiziert, termingerecht, von Duisburg bis Europa.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loader -->
+    <div class="frame-loader" id="frameLoader">
+      <div class="frame-loader__content">
+        <span class="frame-loader__brand">INVICTA</span>
+        <p class="frame-loader__text">LADEN</p>
+        <div class="frame-loader__bar-track">
+          <div class="frame-loader__bar-fill" id="loaderBar"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Outro Content — am Ende der Scroll-Animation -->
+    <div class="hero__outro" id="heroOutro">
+      <div class="hero__outro-inner">
+        <p class="hero__tag">Invicta Kabelverlegung — Duisburg</p>
+        <h1 class="hero__title">
+          <span class="hero__title-line">Kabelverlegung.</span>
+          <span class="hero__title-line hero__title-line--accent">Ohne Kompromisse.</span>
+        </h1>
+        <p class="hero__subtitle">Industrielle Präzision für Projekte jeder Größenordnung — von Duisburg bis Europa.</p>
+        <div class="hero__actions">
+          <a href="#kontakt" class="btn btn--primary">Projekt besprechen</a>
+          <a href="#leistungen" class="btn btn--ghost">Leistungen ansehen</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="hero__scroll">
+      <div class="hero__scroll-line"></div>
+      <span class="hero__scroll-text">Scroll</span>
+    </div>
+  </section>
+
+
+  <!-- ========== LEISTUNGEN ========== -->
+  <section class="section section--light" id="leistungen">
+    <div class="container">
+      <div class="section__header">
+        <p class="section__tag">Was wir tun</p>
+        <h2 class="section__title">Unsere Leistungen</h2>
+        <p class="section__desc">Von der Verlegung über die Montage bis zur fachgerechten Demontage — alles aus einer Hand.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card" data-animate="card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 36L18 24L26 32L42 12"/>
+              <path d="M32 12H42V22"/>
+            </svg>
+          </div>
+          <h3 class="service-card__title">Kabelverlegung</h3>
+          <p class="service-card__text">Steuerkabel, Starkstromkabel, LWL, Datenkabel — ober- und unterirdisch, in jeder Umgebung. Präzise verlegt, termingerecht geliefert.</p>
+        </div>
+
+        <div class="service-card" data-animate="card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="8" y="8" width="32" height="32" rx="4"/>
+              <path d="M16 24H32"/>
+              <path d="M24 16V32"/>
+            </svg>
+          </div>
+          <h3 class="service-card__title">Kabelmontage</h3>
+          <p class="service-card__text">Fachgerechte Montage aller Kabeltypen und Querschnitte. Von Industrieanlagen über Logistikzentren bis zu öffentlicher Infrastruktur.</p>
+        </div>
+
+        <div class="service-card" data-animate="card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="24" cy="24" r="18"/>
+              <path d="M24 14V24L30 30"/>
+            </svg>
+          </div>
+          <h3 class="service-card__title">Demontage</h3>
+          <p class="service-card__text">Professionelle Demontage und fachgerechte Entsorgung. Sicher, sauber, dokumentiert — für Rückbau und Modernisierung.</p>
+        </div>
+
+        <div class="service-card" data-animate="card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 36V20L24 12L36 20V36"/>
+              <path d="M20 36V28H28V36"/>
+            </svg>
+          </div>
+          <h3 class="service-card__title">Beratung & Planung</h3>
+          <p class="service-card__text">Individuelle Konzeption vor Projektstart. Wir analysieren, planen und optimieren — bevor der erste Meter verlegt wird.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== ÜBER UNS ========== -->
+  <section class="section section--dark" id="ueber">
+    <div class="container">
+      <div class="about-split">
+        <div class="about-split__content" data-animate="fade-right">
+          <p class="section__tag">Wer wir sind</p>
+          <h2 class="section__title">Invicta steht für<br><span class="text--accent">unbesiegt.</span></h2>
+          <p class="about-split__text">Wir sind keine Firma, die Kabel verlegt. Wir sind Spezialisten, die Infrastruktur schaffen. Mit einem Team aus erfahrenen Fachkräften, modernstem Equipment und dem Anspruch, jedes Projekt besser abzuschließen als das letzte.</p>
+          <p class="about-split__text">Von Duisburg aus arbeiten wir deutschlandweit und europaweit — für Industrie, Gewerbe und öffentliche Auftraggeber. SCC-zertifiziert, termingerecht, ohne Kompromisse.</p>
+          <a href="#kontakt" class="btn btn--secondary">Mehr erfahren</a>
+        </div>
+        <div class="about-split__visual" data-animate="fade-left">
+          <div class="about-split__image-placeholder">
+            <span>Bild / Asset</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== ZAHLEN ========== -->
+  <section class="section section--light" id="zahlen">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat" data-animate="counter">
+          <span class="stat__number" data-target="500">0</span>
+          <span class="stat__unit">+</span>
+          <p class="stat__label">Abgeschlossene Projekte</p>
+        </div>
+        <div class="stat" data-animate="counter">
+          <span class="stat__number" data-target="10">0</span>
+          <span class="stat__unit">+</span>
+          <p class="stat__label">Jahre Erfahrung</p>
+        </div>
+        <div class="stat" data-animate="counter">
+          <span class="stat__number" data-target="50">0</span>
+          <span class="stat__unit">k</span>
+          <p class="stat__label">Meter Kabel verlegt</p>
+        </div>
+        <div class="stat" data-animate="counter">
+          <span class="stat__number" data-target="15">0</span>
+          <span class="stat__unit">+</span>
+          <p class="stat__label">Länder im Einsatz</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== REFERENZEN ========== -->
+  <section class="section section--dark" id="referenzen">
+    <div class="container">
+      <div class="section__header">
+        <p class="section__tag">Vertrauen</p>
+        <h2 class="section__title">Projekte & Referenzen</h2>
+        <p class="section__desc">Namhafte Unternehmen aus Industrie und Gewerbe vertrauen auf unsere Arbeit.</p>
+      </div>
+
+      <div class="logos-grid" data-animate="logos">
+        <div class="logo-item"><span>Kundenlogo 1</span></div>
+        <div class="logo-item"><span>Kundenlogo 2</span></div>
+        <div class="logo-item"><span>Kundenlogo 3</span></div>
+        <div class="logo-item"><span>Kundenlogo 4</span></div>
+        <div class="logo-item"><span>Kundenlogo 5</span></div>
+        <div class="logo-item"><span>Kundenlogo 6</span></div>
+      </div>
+
+      <div class="certs" data-animate="fade-up">
+        <div class="cert-badge">
+          <span class="cert-badge__icon">SCC</span>
+          <span class="cert-badge__label">Zertifiziert</span>
+        </div>
+        <div class="cert-badge">
+          <span class="cert-badge__icon">ISO</span>
+          <span class="cert-badge__label">9001:2015</span>
+        </div>
+        <div class="cert-badge">
+          <span class="cert-badge__icon">SGU</span>
+          <span class="cert-badge__label">Geprüft</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== CTA BANNER ========== -->
+  <section class="cta-banner" id="ctaBanner">
+    <div class="cta-banner__bg"></div>
+    <div class="container">
+      <div class="cta-banner__content" data-animate="fade-up">
+        <h2 class="cta-banner__title">Ihr nächstes Projekt<br>beginnt mit einem Anruf.</h2>
+        <p class="cta-banner__text">Erzählen Sie uns von Ihrem Vorhaben. Wir melden uns innerhalb von 24 Stunden.</p>
+        <div class="cta-banner__actions">
+          <a href="#kontakt" class="btn btn--primary btn--large">Anfrage senden</a>
+          <a href="tel:+49XXXXXXXXX" class="btn btn--ghost btn--large">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            Jetzt anrufen
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== KONTAKT ========== -->
+  <section class="section section--light" id="kontakt">
+    <div class="container">
+      <div class="contact-split">
+        <div class="contact-split__info" data-animate="fade-right">
+          <p class="section__tag">Kontakt</p>
+          <h2 class="section__title">Sprechen Sie<br>mit uns.</h2>
+          <div class="contact-details">
+            <div class="contact-detail">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              <div>
+                <p class="contact-detail__label">Telefon</p>
+                <a href="tel:+49XXXXXXXXX" class="contact-detail__value">+49 (0) XXX XXXXXXX</a>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+              <div>
+                <p class="contact-detail__label">E-Mail</p>
+                <a href="mailto:info@invicta-kabelverlegung.de" class="contact-detail__value">info@invicta-kabelverlegung.de</a>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              <div>
+                <p class="contact-detail__label">Standort</p>
+                <p class="contact-detail__value">Duisburg, NRW</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form" data-animate="fade-left" id="contactForm">
+          <div class="contact-form__row">
+            <div class="form-group">
+              <label for="name" class="form-label">Name *</label>
+              <input type="text" id="name" name="name" class="form-input" required>
+            </div>
+            <div class="form-group">
+              <label for="firma" class="form-label">Firma</label>
+              <input type="text" id="firma" name="firma" class="form-input">
+            </div>
+          </div>
+          <div class="contact-form__row">
+            <div class="form-group">
+              <label for="email" class="form-label">E-Mail *</label>
+              <input type="email" id="email" name="email" class="form-input" required>
+            </div>
+            <div class="form-group">
+              <label for="telefon" class="form-label">Telefon</label>
+              <input type="tel" id="telefon" name="telefon" class="form-input">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="nachricht" class="form-label">Ihre Nachricht *</label>
+            <textarea id="nachricht" name="nachricht" class="form-input form-input--textarea" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full">Nachricht senden</button>
+          <p class="contact-form__privacy">Mit dem Absenden stimmen Sie unserer <a href="#">Datenschutzerklärung</a> zu.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="/" class="nav__logo">
+            <span class="nav__logo-mark">INVICTA</span>
+            <span class="nav__logo-sub">KABELVERLEGUNG</span>
+          </a>
+          <p class="footer__tagline">Kabelverlegung. Ohne Kompromisse.</p>
+        </div>
+
+        <div class="footer__col">
+          <h4 class="footer__heading">Navigation</h4>
+          <ul class="footer__links">
+            <li><a href="#leistungen">Leistungen</a></li>
+            <li><a href="#ueber">Über uns</a></li>
+            <li><a href="#referenzen">Referenzen</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4 class="footer__heading">Kontakt</h4>
+          <ul class="footer__links">
+            <li><a href="tel:+49XXXXXXXXX">+49 (0) XXX XXXXXXX</a></li>
+            <li><a href="mailto:info@invicta-kabelverlegung.de">info@invicta-kabelverlegung.de</a></li>
+            <li>Duisburg, NRW</li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4 class="footer__heading">Rechtliches</h4>
+          <ul class="footer__links">
+            <li><a href="#">Impressum</a></li>
+            <li><a href="#">Datenschutz</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p>&copy; 2026 Invicta Kabelverlegung. Version 2. Alle Rechte vorbehalten.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
