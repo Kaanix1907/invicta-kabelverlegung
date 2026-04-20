@@ -301,6 +301,12 @@ function initFrameSequence() {
   const canvas = document.getElementById('frameCanvas');
   if (!canvas) return;
 
+  // Browser-Scroll-Restoration deaktivieren — wir wollen immer oben starten
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  window.scrollTo(0, 0);
+
   const ctx = canvas.getContext('2d');
   const FRAME_COUNT = 121;
   const frames = [];
@@ -442,21 +448,24 @@ function initFrameSequence() {
       if (loaderBar) loaderBar.style.width = pct + '%';
 
       if (loadedFrames === FRAME_COUNT) {
-        // All frames loaded — hide loader, draw first frame, attach scroll
+        // Alle Frames geladen — Scroll auf 0 zwingen, Loader ausblenden,
+        // Frame 0 zeichnen, erst DANN Scroll-Listener anhängen
+        window.scrollTo(0, 0);
         if (loader) {
           loader.classList.add('hidden');
           setTimeout(() => loader.style.display = 'none', 600);
         }
         drawFrame(0);
         currentFrame = 0;
+        targetProgress = 0;
+        currentProgress = 0;
         window.addEventListener('scroll', onScroll, { passive: true });
-        // Trigger initial position
-        onScroll();
       }
     };
     img.onerror = () => {
       loadedFrames++;
       if (loadedFrames === FRAME_COUNT) {
+        window.scrollTo(0, 0);
         if (loader) {
           loader.classList.add('hidden');
           setTimeout(() => loader.style.display = 'none', 600);
