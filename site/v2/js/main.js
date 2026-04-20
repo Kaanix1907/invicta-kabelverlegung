@@ -308,7 +308,10 @@ function initFrameSequence() {
   window.scrollTo(0, 0);
 
   const ctx = canvas.getContext('2d');
-  const FRAME_COUNT = 121;
+  // Hochwertiges Downsampling — essentiell für HD-Frames auf Retina-Displays
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
+  const FRAME_COUNT = 145;
   const frames = [];
   let loadedFrames = 0;
   let currentFrame = -1;
@@ -318,6 +321,9 @@ function initFrameSequence() {
   const loader = document.getElementById('frameLoader');
   const loaderBar = document.getElementById('loaderBar');
 
+  // Mobile-Detection — entscheidet zwischen cover-fit (Desktop) und contain-fit (Mobile)
+  let isMobile = window.innerWidth <= 768;
+
   // --- Canvas resize with Retina support ---
   function resizeCanvas() {
     const dpr = window.devicePixelRatio || 1;
@@ -325,13 +331,17 @@ function initFrameSequence() {
     canvas.height = window.innerHeight * dpr;
     canvas.style.width = window.innerWidth + 'px';
     canvas.style.height = window.innerHeight + 'px';
+    isMobile = window.innerWidth <= 768;
+    // imageSmoothing muss nach Canvas-Resize neu gesetzt werden
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
     if (currentFrame >= 0) drawFrame(currentFrame);
   }
 
   window.addEventListener('resize', resizeCanvas);
   resizeCanvas();
 
-  // --- Cover-fit drawing (fills viewport completely, no gaps) ---
+  // --- Frame drawing: contain-fit auf Mobile (Full-Scene sichtbar), cover-fit Desktop ---
   function drawFrame(index) {
     const img = frames[index];
     if (!img || !img.complete) return;
@@ -344,13 +354,24 @@ function initFrameSequence() {
     const canvasRatio = cw / ch;
     let drawW, drawH, drawX, drawY;
 
-    // Cover-fit for all viewports — image fills canvas completely
-    if (canvasRatio > imgRatio) {
-      drawW = cw;
-      drawH = cw / imgRatio;
+    if (isMobile) {
+      // contain-fit: komplettes Frame sichtbar, aspect-correct, kein Crop
+      if (canvasRatio > imgRatio) {
+        drawH = ch;
+        drawW = ch * imgRatio;
+      } else {
+        drawW = cw;
+        drawH = cw / imgRatio;
+      }
     } else {
-      drawH = ch;
-      drawW = ch * imgRatio;
+      // cover-fit: füllt gesamten Canvas, schneidet bei Bedarf
+      if (canvasRatio > imgRatio) {
+        drawW = cw;
+        drawH = cw / imgRatio;
+      } else {
+        drawH = ch;
+        drawW = ch * imgRatio;
+      }
     }
     drawX = (cw - drawW) / 2;
     drawY = (ch - drawH) / 2;

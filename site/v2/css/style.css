@@ -1398,7 +1398,19 @@ a.contact-detail__value:hover {
 }
 
 @media (max-width: 768px) {
-  .hero__sequence--v2 { height: 280vh; }
+  .hero__sequence--v2 { height: 260vh; }
+  /* Auf Mobile contain-fit: Full-Scene sichtbar mit cinematischem Letterbox — dunkler Hintergrund wirkt wie eingerahmtes Video */
+  .hero--v2 .hero__sequence-sticky {
+    background: var(--color-dark);
+  }
+  /* Gradient-Overlays für Übergang Dark→Video→Dark (sonst harte Kante bei contain-fit) */
+  .hero--v2 .hero__sequence-sticky::before,
+  .hero--v2 .hero__sequence-sticky::after {
+    background: linear-gradient(to bottom, var(--color-dark), transparent);
+  }
+  .hero--v2 .hero__sequence-sticky::after {
+    background: linear-gradient(to top, var(--color-dark), transparent);
+  }
 }
 
 /* Top-Logo — großer INVICTA-Schriftzug oben im Canvas */
