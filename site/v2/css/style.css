@@ -1440,10 +1440,33 @@ a.contact-detail__value:hover {
 
 @media (max-width: 768px) {
   .sequence-logo-top {
-    top: 14vh;
+    top: 10vh;
+    /* mix-blend-mode liefert auf komplexem Gebäude-Hintergrund inkonsistente Lesbarkeit — auf Mobile lieber weißen Text mit Shadow */
+    mix-blend-mode: normal;
+    padding: 0 20px;
+    width: 100%;
+  }
+  .sequence-logo-top__name {
+    font-size: clamp(44px, 13vw, 72px);
+    letter-spacing: 0.06em;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.55), 0 0 40px rgba(0, 0, 0, 0.35);
   }
   .sequence-logo-top__sub {
-    letter-spacing: 0.35em;
+    letter-spacing: 0.32em;
+    font-size: 10px;
+    margin-top: 10px;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
+  }
+}
+
+@media (max-width: 480px) {
+  .sequence-logo-top__name {
+    font-size: clamp(40px, 14vw, 64px);
+    letter-spacing: 0.04em;
+  }
+  .sequence-logo-top__sub {
+    letter-spacing: 0.28em;
+    font-size: 9px;
   }
 }
 
